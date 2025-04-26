@@ -39,13 +39,7 @@ pipeline {
                 sh 'docker exec $CONTAINER_NAME cat target_files/sample1.txt || true'
             }
         }
-stage('Build Docker Image') {
-    steps {
-        dir('ransomware_sim') {
-            sh 'docker build -t ransomware-sim .'
-        }
-    }
-}
+
 
 
 
