@@ -39,6 +39,15 @@ pipeline {
                 sh 'docker exec $CONTAINER_NAME cat target_files/sample1.txt || true'
             }
         }
+stage('Build Docker Image') {
+    steps {
+        dir('ransomware_sim') {
+            sh 'docker build -t ransomware-sim .'
+        }
+    }
+}
+
+
 
         // Stage to stop the Docker container after the tests
         stage('Stop Container') {
@@ -47,13 +56,7 @@ pipeline {
                 sh 'docker stop $CONTAINER_NAME || true'
             }
         }
-stage('Build Docker Image') {
-    steps {
-        dir('ransomware_sim') {
-            sh 'docker build -t ransomware-sim .'
-        }
-    }
-}
+
 
     }
 
