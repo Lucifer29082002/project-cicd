@@ -47,6 +47,14 @@ pipeline {
                 sh 'docker stop $CONTAINER_NAME || true'
             }
         }
+stage('Build Docker Image') {
+    steps {
+        dir('ransomware_sim') {
+            sh 'docker build -t ransomware-sim .'
+        }
+    }
+}
+
     }
 
     post {
